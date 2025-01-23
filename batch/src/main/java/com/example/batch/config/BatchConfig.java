@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import com.example.batch.tasklet.HelloTasklet;
+
 // Spring Batchの設定クラスであることを示す
 @Configuration
 // Batch機能を有効化
@@ -28,7 +30,7 @@ public class BatchConfig {
 	@Bean
 	public Step stepProcess() {
 		return new StepBuilder("stepProcess",jobRepository)
-				.tasklet(new Hellotasklet(),transactionManager)
+				.tasklet(new HelloTasklet(),transactionManager)
 				.build();
 	}
 	
