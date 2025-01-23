@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 //Batch機能の有効化
 @EnableBatchProcessing 
 public class BatchConfig {
-	private final JobBuilderFactory jobBbuilderFactory;
+	private final JobBuilderFactory jobBuilderFactory;
 	private final StepBuilderFactory stepBuilderFactory;
 
 	//コンストラクタで必要なビルダーファクトリーを注入
-	public BatchConfig(JobBuilderfactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory) {
-		this.jobBbuilderFactory = jobBuilderFactory;
+	public BatchConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory) {
+		this.jobBuilderFactory = jobBuilderFactory;
 		this.stepBuilderFactory = stepBuilderFactory;
 		
 	}
