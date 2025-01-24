@@ -8,6 +8,7 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.example.batch.tasklet.HelloTasklet;
@@ -16,6 +17,7 @@ import com.example.batch.tasklet.HelloTasklet;
 @Configuration
 // Batch機能を有効化
 @EnableBatchProcessing
+@EnableScheduling
 public class BatchConfig {
 	private final JobRepository jobRepository;
 	private final PlatformTransactionManager transactionManager;
