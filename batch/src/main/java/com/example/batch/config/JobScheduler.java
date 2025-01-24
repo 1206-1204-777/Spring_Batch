@@ -14,14 +14,13 @@ public class JobScheduler {
 	@Autowired
 	private Job jobProcess;
 
-	//10秒ごとに処理を行う
-	@Scheduled(fixedRate = 10000)
+	//1分ごとに処理を行う
+	@Scheduled(fixedRate = 1000)
 	public void runjob() {
 		try {
 			jobLaunchar.run(jobProcess, new JobParametersBuilder()
 					.addLong("time",System.currentTimeMillis())
 			.toJobParameters());
-			System.out.println("Hello");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
