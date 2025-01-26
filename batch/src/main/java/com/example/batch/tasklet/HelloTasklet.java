@@ -4,9 +4,17 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.stereotype.Component;
+
+import com.example.batch.service.TaskletResultService;
 
 //Taskletインターフェイスを実装
+@Component
 public class HelloTasklet implements Tasklet {
+	private final TaskletResultService taskletResultService;
+	public HelloTasklet(TaskletResultService taskletResultService) {
+		this.taskletResultService = taskletResultService;
+	}
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		int num = (int) (Math.random() * 2500) + 1;
@@ -18,8 +26,10 @@ public class HelloTasklet implements Tasklet {
 			if (point >= 500) {
 				System.out.println(point + "ポイント");
 			}
-		}else {
+		}else if(number<= 500){
 			System.out.println("ポイントなし");
+		}else {
+			System.out.println("No point");
 		}
 		return RepeatStatus.FINISHED;
 	}
